@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body_block %}
+   {% comment %} <style type="text/css">
+    ul.errorlist {
+        margin: 0;
+        padding: 0;
+    }
+    .errorlist li {
+        background-color: red;
+        color: white;
+        display: block;
+        font-size: 10px;
+        margin: 0 0 3px;
+        padding: 4px 5px;
+    }
+    button {
+        display: inline;
+    }
+</style>{% endcomment %}
+    <div class="body">
+		<div>
+			<div>
+				<div>
+					<div class="programs">
+						<h2>SUMMER CAMP PROGRAMS</h2>
+						<div class="first">
+							<ul>
+								<li class="selected">
+									<a href="/telecom_util/smsPDU">SMS PDU</a>
+								</li>
+                                <li class="selected">
+									<a href="/telecom_util/pcapUpload">Pcap Upload</a>
+								</li>
+                                <li class="selected">
+									<a href="/telecom_util/pcapDownload">Pcap Download</a>
+								</li>
+                                <li class="selected">
+									<a href="/telecom_util/pcapGeneration">Pcap Generation</a>
+								</li>
+							</ul>
+						</div>
+                         <form action="/telecom_util/pcapGeneration" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                             <table>
+                             {{ forms.as_table}}
+
+                             </table>
+                            <input type="submit" value="Generate" id="submit">
+
+                         </form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

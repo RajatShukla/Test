@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+{% load staticfiles  %}
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Summer Camp Website Template</title>
+	<link rel="stylesheet" href="{%  static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+	<div class="header">
+		<div>
+			<a href="index.html" id="logo"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+			<ul>
+				<li class="selected">
+					<a href="/"><span>H</span>ome</a>
+				</li>
+				<li>
+					<a href="/about"><span>A</span>bout</a>
+				</li>
+				<li>
+					<a href="/product"><span>P</span>roduct</a>
+				</li>
+				<li>
+					<a href="/services"><span>S</span>ervices</a>
+				</li>
+				<li>
+					<a href="/contact"><span>C</span>ontact</a>
+				</li>
+			</ul>
+			<div>
+				<p>
+					<span>C</span>amp <span>S</span>tarts <span>I</span>n: <span><span>228</span></span> <span>D</span>ays
+				</p>
+			</div>
+		</div>
+	</div>
+    {% block body_block %}{{% endblock %}
+	<div class="footer">
+		<div>
+			<div>
+				<h3>NEWSLETTER</h3>
+				<p>
+					Nulla porttitor vulputate elit, trist ique malesuada sem.
+				</p>
+				<form action="index.html">
+					<input type="text" value="Email Address" onblur="this.value=!this.value?'Email Address':this.value;" onfocus="this.select()" onclick="this.value='';">
+					<input type="submit" value="Get">
+				</form>
+			</div>
+			<div>
+				<h4>LATEST BLOG</h4>
+				<ul>
+					<li>
+						<p>
+							<a href="blog.html">Phasellus parea ut di tincidunt blandit nisi ut pellentesque.</a>
+						</p>
+						<span>11/07/2011</span>
+					</li>
+					<li>
+						<p>
+							<a href="blog.html">Donec dictum semper augue, ut consectetur magna posuere eget.</a>
+						</p>
+						<span>11/03/2011</span>
+					</li>
+					<li>
+						<p>
+							<a href="blog.html">Cum sociis natoque penatibus et magnis dis parturient.</a>
+						</p>
+						<span>11/27/2011</span>
+					</li>
+				</ul>
+			</div>
+			<div class="connect">
+				<h4>FOLLOW US:</h4>
+				<a href="http://freewebsitetemplates.com/go/facebook/" class="facebook">Facebook</a> <a href="http://freewebsitetemplates.com/go/twitter/" class="twitter">Twitter</a> <a href="http://freewebsitetemplates.com/go/googleplus/" class="google">Google+</a>
+			</div>
+		</div>
+		<div>
+			<p>
+				Summer Camp &#169; 2011 | All Rights Reserved
+			</p>
+		</div>
+	</div>
+</body>
+</html>

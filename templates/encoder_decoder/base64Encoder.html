@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body_block %}
+    <div class="body">
+		<div>
+			<div>
+				<div>
+					<div class="programs">
+						<h2>SUMMER CAMP PROGRAMS</h2>
+						<div class="first">
+							<ul>
+								<li class="selected">
+									<a href="/encoderDecoder/b64Encoding">Base64 Encoder</a>
+								</li>
+                                <li class="selected">
+									<a href="/encoderDecoder/b64Decoding">Base64 Decoder</a>
+								</li>
+                                <li class="selected">
+									<a href="/encoderDecoder/encodingType">Encoding Type Finder</a>
+								</li>
+                                <li class="selected">
+									<a href="/encoder_decoder/StringType">String Type Finder </a>
+								</li>
+
+							</ul>
+						</div>
+						<div>
+							<h1>Encoding base64 String</h1>
+                            <form action="/encoderDecoder/b64Encoding" method="post">
+                            {% csrf_token %}
+                             <ul>
+                             {{ form.as_ul }}
+
+                             </ul>
+                            <input type="submit" value="Encode" id="submit">
+                            </p>
+						</form>
+                        {% if encoded_str != '' %}
+                            <textarea rows="6" cols="80" maxlength="5000">
+                            {{ encoded_str }}
+                            </textarea>
+                        {% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

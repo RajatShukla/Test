@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block body_block %}
+{% block body_block %}
+	<div class="body">
+		<div class="applications">
+			<div>
+				<div>
+					<div class="application">
+						<h2>STAFF APPLICATION</h2>
+						<form action="index.html">
+							<div>
+								<table>
+									<tr>
+										<td><label for="name"><span>N</span>ame:</label></td>
+										<td><input type="text" id="name"></td>
+									</tr>
+									<tr>
+										<td><label for="nickname"><span>N</span>ickname:</label></td>
+										<td><input type="text" id="nickname"></td>
+									</tr>
+									<tr>
+										<td><label for="gender1"><span>G</span>ender:</label></td>
+										<td><input type="radio" name="gender" id="gender1" value="male">
+											<span>M</span>ale
+											<input type="radio" name="gender" id="gender2" value="female">
+											<span>F</span>emale </td>
+									</tr>
+									<tr>
+										<td><label for="position"><span>P</span>osition:</label></td>
+										<td><input type="text" id="position"></td>
+									</tr>
+									<tr>
+										<td><label for="address"><span>A</span>ddress:</label></td>
+										<td><textarea name="address" id="address" cols="30" rows="5"></textarea></td>
+									</tr>
+								</table>
+							</div>
+							<div>
+								<table>
+									<tr>
+										<td><label for="birthdate"><span>B</span>irthdate:</label></td>
+										<td><input type="text" id="birthdate"></td>
+									</tr>
+									<tr>
+										<td><label for="age"><span>A</span>ge:</label></td>
+										<td><input type="text" id="age"></td>
+									</tr>
+									<tr>
+										<td><label for="phone-number"><span>P</span>hone <span>N</span>um.:</label></td>
+										<td><input type="text" id="phone-number"></td>
+									</tr>
+									<tr>
+										<td><label for="email"><span>E</span>mail <span>A</span>dd:</label></td>
+										<td><input type="text" id="email"></td>
+									</tr>
+								</table>
+							</div>
+							<input type="submit" value="submit application" id="application-submit">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% endblock %}

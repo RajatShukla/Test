@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block body_block %}
+	<div class="body">
+		<div class="contact">
+			<div>
+				<div>
+					<div class="contact">
+						<h2>SUMMER CAMP INFO</h2>
+						<div class="address">
+							<span><span>A</span>ddress:</span>
+							<p>
+								1234 Nowhere County, Highway 56, Nowhereland, Nowhere 78910
+							</p>
+							<span><span>P</span>hone <span>N</span>umber:</span>
+							<p>
+								1-800-999-9999 or 1-800-111-1111
+							</p>
+							<span><span>F</span>ax <span>N</span>umber:</span>
+							<p>
+								1-800-222-2222
+							</p>
+						</div>
+						<h3><span>F</span>or <span>A</span>ny <span>I</span>nquiries, <span>P</span>lease <span>F</span>ill <span>o</span>ut <span>T</span>he <span>F</span>orm <span>B</span>elow.</h3>
+						<form action="/contact" method="post">
+                            {% csrf_token %}
+                             <table>
+                             {{ form.as_table }}
+
+                             </table>
+                            <input type="submit" value="Send" id="submit">
+                            </p>
+						</form>
+{#							<p>#}
+{##}
+{#                                {% for field in form.visible_fields %}#}
+{#                                 {{ field.label }}#}
+{#                                {{ field.errors }}#}
+{#                                {{ field.help_text }}#}
+{#                                {{ field }}#}
+{#                                 <br>#}
+{#                                {% endfor %}#}
+
+								<!--<tr>
+									<td><label for="name"><span>N</span>ame:</label></td>
+									<td><input type="text" id="name"></td>
+								</tr> -->
+								<!--<tr>
+									<td><label for="email"><span>E</span>mail <span>A</span>ddress:</label></td>
+									<td><input type="text" id="email"></td>
+								</tr>
+								<tr>
+									<td><label for="subject"><span>S</span>ubject:</label></td>
+									<td><input type="text" id="subject"></td>
+								</tr>
+								<tr>
+									<td><label for="message"><span>M</span>essage:</label></td>
+									<td><textarea name="message" id="message" cols="30" rows="10"></textarea></td>
+								</tr> -->
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

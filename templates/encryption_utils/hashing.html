@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block body_block %}
+    <div class="body">
+		<div>
+			<div>
+				<div>
+					<div class="programs">
+						<h2>SUMMER CAMP PROGRAMS</h2>
+						<div class="first">
+							<ul>
+								<li class="selected">
+									<a href="/encrypt_util/hash">Hashing</a>
+								</li>
+                                <li class="selected">
+									<a href="/encrypt_util/encr_decr">Encryption &  Decryption</a>
+								</li>
+                                <li class="selected">
+									<a href="/encrypt_util/rsa">RSA Algo</a>
+								</li>
+							</ul>
+						</div>
+                        <h1>Hashing algorithm for an input string</h1>
+                        <form action="/encrypt_util/hash" method="post">
+                            {% csrf_token %}
+                             <ul>
+                             {{ form.as_ul }}
+
+                             </ul>
+                            <input type="submit" value="Convert" id="submit">
+                            </p>
+						</form>
+                        {% if hashed_str != '' %}
+                            <textarea rows="6" cols="80" maxlength="5000">
+                            {{ hashed_str }}
+                            </textarea>
+                        {% endif %}
+						<div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
