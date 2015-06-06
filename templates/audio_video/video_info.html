@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block body_block %}
-     <div class="body">
+    <div class="body">
 		<div>
 			<div>
 				<div>
@@ -9,21 +9,23 @@
 						<div class="first">
 							<ul>
 								<li class="selected">
-									<a href="/audio_video/audio_info">MD2 Hash</a>
+									<a href="/audio_video/audio_info">Audio Information</a>
 								</li>
                                 <li class="selected">
-									<a href="/audio_video/video_info">MD4 Hash</a>
+									<a href="/audio_video/video_info">Video Information</a>
 								</li>
-
-
-
 
 							</ul>
 						</div>
-						<div>
+                         <form action="/audio_video/video_info" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                             <table>
+                             {{ forms.as_table}}
 
+                             </table>
+                            <input type="submit" value="Submit" id="submit">
+                         </form>
 
-						</div>
 					</div>
 				</div>
 			</div>

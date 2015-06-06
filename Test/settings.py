@@ -57,9 +57,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'DevUtils.urls'
+ROOT_URLCONF = 'Test.urls'
 
-WSGI_APPLICATION = 'DevUtils.wsgi.application'
+WSGI_APPLICATION = 'Test.wsgi.application'
 
 
 # Database
@@ -94,6 +94,7 @@ STATIC_PATH = os.path.join( BASE_DIR, 'static' )
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+STATIC_PATH = "D:/Test/static"
 print( "Static directory path:", STATIC_PATH )
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),

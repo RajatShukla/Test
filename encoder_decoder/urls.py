@@ -9,9 +9,10 @@ urlpatterns = patterns('',
     # url(r'^$', 'DevUtils.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$',views.indexView),
+
     url(r'^/b64Encoding$',views.base64Encoder),
     url(r'^/b64Decoding$',views.base64Decoder),
+    url(r'^$',views.indexView),
 
 
     )

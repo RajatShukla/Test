@@ -9,31 +9,13 @@
 						<div class="first">
 							<ul>
 								<li class="selected">
-									<a href="/encrypt_util/hash">Hashing</a>
+									<a href="/audio_video/audio_info">Audio File Information</a>
 								</li>
                                 <li class="selected">
-									<a href="/encrypt_util/encr_decr">Encryption&Decryption</a>
-								</li>
-                                <li class="selected">
-									<a href="/encrypt_util/rsa">RSA Algo</a>
+									<a href="/audio_video/video_info">Video File Information</a>
 								</li>
 							</ul>
 						</div>
-                          <form action="/encrypt_util/encr_decr" method="post">
-                            {% csrf_token %}
-                             <ul>
-                             {{ form.as_ul }}
-
-                             </ul>
-                            <input type="submit" value="Convert" id="submit">
-                            </p>
-						</form>
-                        <h6> Value of  encrypted string {{ encr_str }}</h6>
-                        {% if encr_str != '' %}
-                            <textarea rows="6" cols="80" maxlength="5000">
-                            {{ encr_str }}
-                            </textarea>
-                        {% endif %}
 					</div>
 				</div>
 			</div>
