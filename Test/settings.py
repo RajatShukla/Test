@@ -1,5 +1,5 @@
 """
-Django settings for Test project.
+Django settings for DevUtils project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6lizv6g!igp@#@0a9(08&!^8yo$+b_6!00b)$3#opqmz@@7^=3'
+SECRET_KEY = 'y4-m^u7@dc-6m_1wejga1*nqkx5sfqm=)yvq3a*0@ksll8%dap'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,7 +36,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'test_app',
+    'DevUtils1',
+    'audio_video',
+    'date_time',
+    'encoder_decoder',
+    'conversion',
+    'math_util',
+    'pcap_uitl',
+    'hex_editor',
+    'telecom_utils',
+    'filetransfers',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,9 +57,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'Test.urls'
+ROOT_URLCONF = 'DevUtils.urls'
 
-WSGI_APPLICATION = 'Test.wsgi.application'
+WSGI_APPLICATION = 'DevUtils.wsgi.application'
 
 
 # Database
@@ -81,7 +90,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_PATH = os.path.join( BASE_DIR, 'static' )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+print( "Static directory path:", STATIC_PATH )
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
+
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = ''
+
+
+PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'
+SERVE_FILE_BACKEND = 'filetransfers.backends.default.serve_file'
+PUBLIC_DOWNLOAD_URL_BACKEND = 'filetransfers.backends.default.public_download_url'
