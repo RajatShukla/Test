@@ -6,6 +6,7 @@ from math_util.forms import PowLogForms
 from math_util.forms import TrigonmetryForms
 from math_util.forms import HyperbolicForms
 from math_util.forms import MatrixForm
+import math_util.math_calc as math_calc
 
 def indexView(request):
     context=RequestContext(request)
@@ -23,6 +24,9 @@ def number_theoretic(request):
             #form.save()
             input_val  = form['input_value'].value()
             oprn_val  = form['choiceFields'].value()
+            print(input_val, oprn_val)
+            params = math_calc.num_theoritic_calc(input_val, oprn_val)
+            contextDict['params'] = params
             return render_to_response('math_util/number_theoretic.html',contextDict,context)
         else:
             return render_to_response('math_util/number_theoretic.html',contextDict,context)
@@ -42,6 +46,8 @@ def pow_log(request):
             input_val1  = form['inp_val1'].value()
             input_val2  = form['inp_val2'].value()
             oprn_val  = form['choiceFields'].value()
+            params = math_calc.pow_log_calc(input_val1, input_val2, oprn_val)
+            contextDict['params'] = params
             return render_to_response('math_util/pow_log.html',contextDict,context)
         else:
             return render_to_response('math_util/pow_log.html',contextDict,context)
@@ -61,6 +67,8 @@ def trigon_fun(request):
             input_val1  = form['inp_val1'].value()
             #input_val2  = form['inp_val2'].value()
             oprn_val  = form['choiceFields'].value()
+            params = math_calc.trigon_calc(input_val1, oprn_val)
+            contextDict['params'] = params
             return render_to_response('math_util/trigon_fun.html',contextDict,context)
         else:
             return render_to_response('math_util/trigon_fun.html',contextDict,context)
@@ -80,6 +88,8 @@ def hyperbolic_fun(request):
             input_val1  = form['inp_val1'].value()
             #input_val2  = form['inp_val2'].value()
             oprn_val  = form['choiceFields'].value()
+            params = math_calc.hyperbolic_fun_cal(input_val1, oprn_val)
+            contextDict['params'] = params
             return render_to_response('math_util/hyperbolic_fun.html',contextDict,context)
         else:
             return render_to_response('math_util/hyperbolic_fun.html',contextDict,context)

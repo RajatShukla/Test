@@ -37,7 +37,7 @@ class HyperbolicForms(forms.Form):
     operation_types = (('1','inverse hyperbolic cosine of x'), ('2', 'inverse hyperbolic sine of x'),
                        ('3', 'inverse hyperbolic tangent of x'), ('4', 'hyperbolic cosine of x'),
                        ('5', 'hyperbolic sine of x' ), ('6', 'hyperbolic tangent of x'))
-    choiceFields = forms.ChoiceField(widget=forms.RadioSelect, choices=operation_types, initial='1', required=True)
+    choiceFields = forms.ChoiceField(widget=forms.RadioSelect, choices=operation_types, required=True, initial=1)
     class Meta:
         fields = ('Value', 'Operation')
 
@@ -56,6 +56,18 @@ class MatrixForm(forms.Form):
                 self.fields['c_' + str(i) + '_' + str(j)] = field
 
 
+class MatrixInputForm(forms.Form):
+
+    def __init__(self, *args, **kwargs):
+        self.ncols = kwargs.pop('ncols', 1)
+        self.nrows = kwargs.pop('nrows', 1)
+
+        super(MatrixForm, self).__init__(*args, **kwargs)
+
+        for i in range(0,self.ncols):
+            for j in range(0,self.nrows):
+                field = forms.CharField(label="",max_length=2)
+                self.fields['c_' + str(i) + '_' + str(j)] = field
 
 
 
