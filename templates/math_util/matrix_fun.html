@@ -26,6 +26,31 @@
 
 							</ul>
 						</div>
+                         <form action="/math_util/matrix_fun" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                             <table>
+                             {{ forms.as_table}}
+
+                             </table>
+                              <table>
+                            {% for row in rows %}
+                                <tr>
+                                {% for col in cols %}
+                                    <td><input type="text" value="2"></td>
+                                {% endfor %}
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                            <input type="submit" value="Submit" id="submit">
+                         </form>
+                        {% if params != '' %}
+                            <textarea rows="6" cols="80" maxlength="5000">
+                            {{ params }}
+                            </textarea>
+                        {% endif %}
+
+
 					</div>
 				</div>
 			</div>
