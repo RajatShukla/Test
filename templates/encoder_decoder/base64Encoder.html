@@ -14,30 +14,52 @@
                                 <li class="selected">
 									<a href="/encoderDecoder/b64Decoding">Base64 Decoder</a>
 								</li>
-                                <li class="selected">
-									<a href="/encoderDecoder/encodingType">Encoding Type Finder</a>
-								</li>
-                                <li class="selected">
-									<a href="/encoder_decoder/StringType">String Type Finder </a>
-								</li>
+{#                                <li class="selected">#}
+{#									<a href="/encoderDecoder/encodingType">Encoding Type Finder</a>#}
+{#								</li>#}
+{#                                <li class="selected">#}
+{#									<a href="/encoder_decoder/StringType">String Type Finder </a>#}
+{#								</li>#}
 
 							</ul>
 						</div>
 						<div>
-							<h1>Encoding base64 String</h1>
+							{% if form.errors %}
+                            <p style="color: red;">
+                            Please correct the error{{ form.errors|pluralize }} below.
+{#                            #<!-- {{ form.errors }} -->#}
+                            </p>
+                            {% endif %}
                             <form action="/encoderDecoder/b64Encoding" method="post">
                             {% csrf_token %}
                              <ul>
                              {{ form.as_table }}
 
                              </ul>
-                            <input type="submit" value="Encode" id="submit">
+{#                            <input type="submit" value="Encode" id="submit">#}
+{#                            <input type="submit" value="Encode"#}
+{#                             style="background-color: #bcc6ae;#}
+{#                             border-top: 2px solid #5f6c4d;#}
+{#                             border-right: 2px solid #000000;#}
+{#                             border-bottom: 2px solid #000000;#}
+{#                             border-left: 2px solid #5f6c4d;#}
+{#                             width: 80px; height: 24px;#}
+{#                             font-weight: bold;" />#}
                             </p>
+
+                            <input type="submit" value="Encode" id="submit">
+
 						</form>
                         {% if encoded_str != '' %}
-                            <textarea style='width: 840px; height: 130px'>{{ encoded_str }}</textarea>
+                            <textarea style='width: 740px; height: 130px'>{{ encoded_str }}</textarea>
                         {% endif %}
+                        <p><b>
+                        Base64 is a group of similar binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The term Base64 originates from a specific MIME content transfer encoding.
+
+Base64 encoding schemes are commonly used when there is a need to encode binary data that needs to be stored and transferred over media that is designed to deal with textual data. This is to ensure that the data remains intact without modification during transport. Base64 is commonly used in a number of applications, including email via MIME, and storing complex data in XML.
+                        </b></p>
 						</div>
+
 					</div>
 				</div>
 			</div>

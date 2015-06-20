@@ -1402,3 +1402,23 @@ p a:hover {
 	font-family: 'forumregular';
 }
 
+
+
+.button {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding: 10px 75px;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: relative;
+    top: 80%;
+}

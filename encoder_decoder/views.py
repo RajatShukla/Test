@@ -7,6 +7,7 @@ from encoder_decoder.forms import Base64DecoderForm
 from encoder_decoder.forms import Base64EncoderForm
 import base64
 from encoder_decoder import encode_decode
+from django.core.validators import MaxLengthValidator
 
 
 def indexView(request):
@@ -19,7 +20,7 @@ def base64Encoder(request):
     context = RequestContext(request)
     if request.method == 'POST':
         encoded_form = Base64EncoderForm(request.POST)
-        if encoded_form['inputText'].value() != '' and encoded_form['choiceFields'].value() != '':
+        if encoded_form['inputText'].value() != '' and encoded_form['choiceFields'].value() != '' and  len(encoded_form['inputText'].value()) <= 600:
             encoded_str = encode_decode.encoder(encoded_form['inputText'].value(), int(encoded_form['choiceFields'].value()))
 
         else:
@@ -39,7 +40,7 @@ def base64Decoder(request):
     context = RequestContext(request)
     if request.method == 'POST':
         form_for_decoding = Base64DecoderForm(request.POST)
-        if ( form_for_decoding['inputText'].value() != '' and form_for_decoding['choiceFields'].value() != ''):
+        if ( form_for_decoding['inputText'].value() != '' and form_for_decoding['choiceFields'].value() != '' and len(form_for_decoding['inputText'].value()) <= 600):
             decoded_str = encode_decode.decoder(form_for_decoding['inputText'].value(), int(form_for_decoding['choiceFields'].value()))
         else:
             decoded_str = ""
