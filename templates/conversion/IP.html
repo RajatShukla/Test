@@ -19,30 +19,30 @@
 								</li>
 							</ul>
 						</div>
-                        <form action="/conversion/date_time_conv" method="post" enctype="multipart/form-data">
+                        <form action="/conversion/ip_conv" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                              <table>
-                             {{ date_time_forms.as_table}}
+                             {{ ip_form.as_table}}
 
                              </table>
                             <input type="submit" value="Submit" id="submit">
                         </form>
-                        {% if epoch_params != '' %}
+                        {% if ip_int != '' %}
                             <textarea rows="1" cols="80" maxlength="100">
-                            {{ epoch_params }}
+                            {{ ip_int }}
                             </textarea>
                         {% endif %}
-                        <form action="/conversion/date_time_conv" method="post" enctype="multipart/form-data">
+                        <form action="/conversion/ip_conv" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                              <table>
-                             {{ epoch_forms.as_table}}
+                             {{ ip_int_forms.as_table}}
 
                              </table>
                             <input type="submit" value="Submit" id="submit">
                          </form>
-                        {% if date_time_params != '' %}
+                        {% if ip_val != '' %}
                             <textarea rows="1" cols="80" maxlength="100">
-                            {{ date_time_params }}
+                            {{ ip_val }}
                             </textarea>
                         {% endif %}
 					</div>

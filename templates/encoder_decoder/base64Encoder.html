@@ -28,16 +28,14 @@
                             <form action="/encoderDecoder/b64Encoding" method="post">
                             {% csrf_token %}
                              <ul>
-                             {{ form.as_ul }}
+                             {{ form.as_table }}
 
                              </ul>
                             <input type="submit" value="Encode" id="submit">
                             </p>
 						</form>
                         {% if encoded_str != '' %}
-                            <textarea rows="6" cols="80" maxlength="5000">
-                            {{ encoded_str }}
-                            </textarea>
+                            <textarea style='width: 840px; height: 130px'>{{ encoded_str }}</textarea>
                         {% endif %}
 						</div>
 					</div>

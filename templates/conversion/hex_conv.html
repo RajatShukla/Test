@@ -19,6 +19,14 @@
 								</li>
 							</ul>
 						</div>
+                        <form action="/conversion/hex_conv" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                             <table>
+                             {{ forms.as_table}}
+
+                             </table>
+                            <input type="submit" value="Convert" id="submit">
+                        </form>
 					</div>
 				</div>
 			</div>

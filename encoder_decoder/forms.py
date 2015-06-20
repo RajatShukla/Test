@@ -2,7 +2,17 @@ from registration.backends import default
 
 __author__ = 'RAJAT'
 from django import forms
-from encoder_decoder.models import Base64Form
+from django.utils.safestring import mark_safe
+
+class HorizontalRadioRenderer(forms.RadioSelect.renderer):
+    """ this overrides widget method to put radio buttons horizontally
+        instead of vertically.
+    """
+    def render(self):
+            """Outputs radios"""
+            return mark_safe(u'\n'.join([u'%s\n' % w for w in self]))
+
+
 
 class Base64EncoderForm(forms.Form):
 
@@ -13,12 +23,15 @@ class Base64EncoderForm(forms.Form):
                   ('4','ASCII'), ('5','CP1256'), ('6','ISO-8859-1'),
                   ('7','ISO-8859-2'), ('8','ISO-8859-6'), ('9','ISO-8859-15'),
                   ('10','Windows-1252'))
-    inputText = forms.CharField(widget=forms.Textarea(attrs={'rows': 6, 'cols': 50}), max_length=600, initial="Input string")
-    choiceFields = forms.ChoiceField(widget=forms.RadioSelect, choices=codecTypes, initial='1', required=True)
+
+    inputText = forms.CharField(widget=forms.Textarea(attrs={'rows': 6, 'cols': 50, 'placeholder': 'Please enter the  description'}) , max_length=600)
+    choiceFields = forms.ChoiceField(widget=forms.RadioSelect(renderer=HorizontalRadioRenderer), choices=codecTypes, initial='1', required=True)
 
     class Meta:
-        model = Base64Form
+        pass
+        #model = Base64Form
         fields = ('Input Text', 'Choice Fields')
+
 
 
 class Base64DecoderForm(forms.Form):
@@ -32,9 +45,9 @@ class Base64DecoderForm(forms.Form):
                   ('7','ISO-8859-2'), ('8','ISO-8859-6'), ('9','ISO-8859-15'),
                   ('10','Windows-1252'))
     inputText = forms.CharField(widget=forms.Textarea(attrs={'rows': 6, 'cols': 50}), max_length=600, initial="base64 string")
-    choiceFields = forms.ChoiceField(widget=forms.RadioSelect, choices=codecTypes, initial='1', required=True)
+    choiceFields = forms.ChoiceField(widget=forms.RadioSelect(renderer=HorizontalRadioRenderer), choices=codecTypes, initial='1', required=True)
 
     class Meta:
-        model = Base64Form
+        #model = Base64Form
         fields = ('Input Text',  'Choice Fields')
 

@@ -8,6 +8,7 @@ from encoder_decoder.forms import Base64EncoderForm
 import base64
 from encoder_decoder import encode_decode
 
+
 def indexView(request):
     context=RequestContext(request)
     context_dict = {}
@@ -23,12 +24,14 @@ def base64Encoder(request):
 
         else:
             encoded_str = ""
+
+        encoded_str = encoded_str.strip()
         context_dict = {'form': encoded_form, 'encoded_str':encoded_str }
 
     else:
          encoded_str = ""
          context_dict = {'form': Base64EncoderForm, 'encoded_str':encoded_str }
-    return render_to_response('encoder_decoder/base64Encoder.html',context_dict,context)
+    return render_to_response('encoder_decoder/base64Encoder.html', context_dict, context)
 
 
 
