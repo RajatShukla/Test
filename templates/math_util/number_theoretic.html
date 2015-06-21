@@ -5,7 +5,7 @@
 			<div>
 				<div>
 					<div class="programs">
-						<h2>SUMMER CAMP PROGRAMS</h2>
+
 						<div class="first">
 							<ul>
 								<li class="selected">
@@ -27,19 +27,55 @@
 							</ul>
 
 						</div>
-                         <form action="/math_util/number_theoretic" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                             <table>
-                             {{ forms.as_table}}
+{#                        {% if forms.errors %}#}
+{#                            <p style="color: red;">#}
+{#                            Please correct the error{{ forms.errors|pluralize }} below.#}
+{#                            #<!-- {{ form.errors }} -->#}
+{#                        </p>#}
+{#                        {{ forms.input_value.error_messages }}#}
+{#                        {% endif %}#}
+{#                         <form action="/math_util/number_theoretic" method="post" enctype="multipart/form-data">#}
+{#                            {% csrf_token %}#}
+{#                             <table>#}
+{#                             {{ forms.as_table}}#}
+{##}
+{#                             </table>#}
+{#                            <input type="submit" value="Submit" id="submit">#}
+{#                         </form>#}
 
-                             </table>
-                            <input type="submit" value="Submit" id="submit">
-                         </form>
+
+                        {% for error in errors %}
+                        <h4><p style="color: red;"><b>{{ error }}</b></p><h4>
+                        {% endfor %}
+
+                        <form action="/math_util/number_theoretic" method="post">
+                        {% csrf_token %}
+                        {% for field in forms %}
+
+                            {{ field.errors }} <br>
+                            {{ field.label_tag }} <br> {{ field }}<br>
+
+                        {% endfor %}
+                        <p><input type="submit" value="Submit" id="submit"/></p>
+                        </form>
+
                         {% if params != '' %}
-                            <textarea rows="6" cols="80" maxlength="5000">
+
+                            <label><h4>Output<h4></label>
+                            <textarea rows="6" cols="80" maxlength="500">
                             {{ params }}
-                            </textarea>
+                           </textarea>
                         {% endif %}
+                    <p><b>In mathematics and computer science, the floor and ceiling functions map a real number to the largest previous or the smallest following integer, respectively. More precisely, floor(x) = \lfloor x\rfloor  is the largest integer not greater than x and ceiling(x) =  \lceil x \rceil is the smallest integer not less than x
+                    </b></p>
+                    <p><b>In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example,
+
+                    5! = 5 X 4 X 3 X 2 X 1 = 120.
+                    The value of 0! is 1, according to the convention for an empty product.
+                    The factorial operation is encountered in many areas of mathematics, notably in combinatorics, algebra, and mathematical analysis. Its most basic occurrence is the fact that there are n! ways to arrange n distinct objects into a sequence (i.e., permutations of the set of objects). This fact was known at least as early as the 12th century, to Indian scholars.[2] Fabian Stedman in 1677 described factorials as applied to change ringing.[3] After describing a recursive approach, Stedman gives a statement of a factorial (using the language of the original):
+                     </b></p>
+                    <p><b>Return the mantissa and exponent of x as the pair (m, e). m is a float and e is an integer such that x == m * 2**e exactly. If x is zero, returns (0.0, 0), otherwise 0.5 <= abs(m) < 1. This is used to “pick apart” the internal representation of a float in a portable way.</b></p>
+
 					</div>
 				</div>
 			</div>

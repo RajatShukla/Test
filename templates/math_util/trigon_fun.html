@@ -5,7 +5,7 @@
 			<div>
 				<div>
 					<div class="programs">
-						<h2>SUMMER CAMP PROGRAMS</h2>
+
 						<div class="first">
 							<ul>
 								<li class="selected">
@@ -27,6 +27,9 @@
 							</ul>
 
 						</div>
+                        {% for error in errors %}
+                        <h4><p style="color: red;"><b>{{ error }}</b></p><h4>
+                        {% endfor %}
                          <form action="/math_util/trigon_fun" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                              <table>
