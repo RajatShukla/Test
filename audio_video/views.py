@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from registration.views import _RequestPassingFormView
 from audio_video.forms import UploadFileForm
-from audio_video.forms import YouTubeForm
+from audio_video.forms import YouTubeForm, MyForm
 from audio_video import wave
 import pafy
 
@@ -85,11 +85,12 @@ def youtube_video_info(request):
     params = ''
     contextDict = {'forms': YouTubeForm, 'params':params}
     if request.method == 'POST':
-        form = YouTubeForm(request.POST)
+        form = YouTubeForm(request.POST.copy())
         if form.is_valid():
             #form.save()
             url = form['url'].value()
             video = pafy.new(url)
+            form.data['url'] = video
             #Get all the attribute of the video
             params += "Title:"+str(video.title)+"\n"
             params += "Rating:"+str(video.rating)+"\n"
@@ -109,10 +110,26 @@ def youtube_video_info(request):
             bestaudio = video.getbestaudio()
             bestaudio.bitrate
             contextDict['params'] = params
+            contextDict['forms'] = form
             return render_to_response('audio_video/youtube_video_info.html',contextDict,context)
-        else:
-            return render_to_response('audio_video/youtube_video_info.html',contextDict,context)
+        # else:
+        #     return render_to_response('audio_video/youtube_video_info.html',contextDict,context)
+
 
 
     else:
         return render_to_response('audio_video/youtube_video_info.html',contextDict,context)
+
+
+def test(request):
+    context = RequestContext(request)
+    context_dict = {'form':MyForm}
+    if request.method == 'POST':
+        form = MyForm(request.POST.copy())
+        if form.is_valid():
+            field = form['title'].value()
+            form.data['title'] = field
+            context_dict['form'] = form
+            return render_to_response('audio_video/test.html', context_dict, context)
+    else:
+        return render_to_response('audio_video/test.html', context_dict, context)

@@ -20,12 +20,12 @@
 
 							</ul>
 						</div>
-                         <form action="/audio_video/video_info" method="post" enctype="multipart/form-data">
+                         <form action="/audio_video/test" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                              <table>
-                              {% for field in forms %}
+                              {% for field in form %}
 
-{#                                <tr>{{ field.errors }} </tr><br>#}
+                                <tr>{{ field.errors }} </tr><br>#}
                                 <tr>{{ field.label_tag }}</tr><br>
                                 <tr> {{ field }} </tr><br>
 

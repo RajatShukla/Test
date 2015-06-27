@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^/audio_info$',views.audio_info),
     url(r'^/video_info$',views.video_info),
     url(r'^/youtube_video_info',views.youtube_video_info),
+    url(r'^/test', views.test),
     url(r'^$',views.indexView),
     )
 

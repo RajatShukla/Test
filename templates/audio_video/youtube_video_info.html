@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block body_block %}
+    <script type="text/javascript">
+    function send_form(){
+    Dajaxice.examples.send_form(Dajax.process,{'form':$('#my_form').serialize(true)});
+    }
+    </script>
     <div class="body">
 		<div>
 			<div>
@@ -20,19 +25,54 @@
 
 							</ul>
 						</div>
-                         <form action="/audio_video/youtube_video_info" method="post" enctype="multipart/form-data">
+                        {% comment %} <form  data-parsley-validate action="/audio_video/youtube_video_info" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
-                             <table>
-                             {{ forms.as_table}}
 
-                             </table>
-                            <input type="submit" value="Submit" id="submit">
-                         </form>
+                             <table>
+                              {% for field in forms %}
+
+                                <tr>{{ field.errors }}</tr>
+                                <tr>{{ field.label_tag }}</tr><br>
+                                <tr> {{ field }} </tr><br>
+
+                            {% endfor %}
+
+
+                            <tr><input type="submit" value="Submit" id="submit"></tr>
+                            </table>
+                         </form>{% endcomment %}
+
+
+{#                        <form data-validate="parsley" action="/audio_video/youtube_video_info" method="post" enctype="multipart/form-data">#}
+{#                        {% csrf_token %}#}
+{#                        {{ forms.as_p }}#}
+{#                        <input type="submit" value="Submit" id="submit">#}
+{#                        </form>#}
+
+                        <form action="/audio_video/youtube_video_info" method="post" id="my_form" accept-charset="utf-8">#}
+                       {{ forms.as_p }}
+                       <p><input type="button" value="Send" onclick="send_form();"></p>
+                        </form>
                         {% if params != '' %}
                             <textarea rows="6" cols="80" maxlength="5000">
                             {{ params }}
                             </textarea>
                         {% endif %}
+
+{#                        {% load ajax_form_utils %}#}
+{##}
+{#                    <form method="post">#}
+{#                     <table>#}
+{#                 {{ forms.as_table }}#}
+{#                 <tr><td></td><td><input type="submit" /></td></tr>#}
+{#                 </table>#}
+{#                </form>#}
+{##}
+{#<script type="text/javascript">#}
+{#    $(function(){#}
+{#        $('form').validation({% render_ajax_fields form %});#}
+{#    });#}
+{#</script>#}
 
 					</div>
 				</div>

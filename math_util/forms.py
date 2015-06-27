@@ -54,17 +54,14 @@ class HyperbolicForms(forms.Form):
 
 
 class MatrixForm(forms.Form):
+    no_of_rows = 0
+    no_of_cols = 3
+    text_box_list = []
 
-    def __init__(self, *args, **kwargs):
-        self.ncols = kwargs.pop('ncols', 1)
-        self.nrows = kwargs.pop('nrows', 1)
+    for i in range(no_of_rows * no_of_cols):
+        text_box = forms.IntegerField(min_value=0, initial=0)
+        text_box_list.append(text_box)
 
-        super(MatrixForm, self).__init__(*args, **kwargs)
-
-        for i in range(0,self.ncols):
-            for j in range(0,self.nrows):
-                field = forms.CharField(label="",max_length=2)
-                self.fields['c_' + str(i) + '_' + str(j)] = field
 
 
 
